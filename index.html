@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Человек и общество — 7 класс</title>
+<style>
+:root{--bg:#0d0b09;--panel:rgba(26,21,17,.82);--line:rgba(255,140,40,.28);--or:#ff8a1f;--or2:#ffb35c;--tx:#f4ece4;--mut:#b5a798;--ok:#4cc38a;--bad:#ff5d5d}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",Roboto,Arial,sans-serif;color:var(--tx);min-height:100vh;line-height:1.6;
+background:
+ radial-gradient(circle at 15% 10%,rgba(255,138,31,.28),transparent 45%),
+ radial-gradient(circle at 90% 85%,rgba(40,120,200,.22),transparent 45%),
+ linear-gradient(180deg,#0d0b09,#171009 60%,#0d0b09);
+background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.5;
+background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 300' preserveAspectRatio='none'><path d='M0 300V220l120-60 100 70 130-120 110 90 140-130 120 100 130-110 120 90 120-60 110 70v200z' fill='%23ff8a1f' fill-opacity='.07'/><path d='M0 300V250l150-50 120 60 140-90 130 80 150-100 140 90 130-70 140 60v170z' fill='%23ffffff' fill-opacity='.04'/></svg>") bottom/100% 40% no-repeat}
+.hidden{display:none!important}
+.noselect{-webkit-user-select:none;user-select:none}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.2}
+:focus-visible{outline:3px solid var(--or2);outline-offset:2px}
+
+/* LOGIN */
+#login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.box{width:100%;max-width:440px;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:36px 30px;backdrop-filter:blur(14px);box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.emblem{width:64px;height:64px;border-radius:50%;background:radial-gradient(circle,var(--or2),var(--or));display:grid;place-items:center;font-size:30px;margin-bottom:18px;box-shadow:0 0 30px rgba(255,138,31,.5)}
+.box h1{font-size:30px;margin-bottom:6px}
+.box p{color:var(--mut);margin-bottom:22px;font-size:15px}
+label{display:block;font-size:14px;color:var(--or2);margin:14px 0 6px}
+input{width:100%;padding:13px 15px;border-radius:12px;border:1px solid var(--line);background:rgba(0,0,0,.45);color:var(--tx);font-size:16px}
+input:focus{border-color:var(--or);outline:none}
+.err{color:var(--bad);font-size:13px;min-height:18px;margin-top:8px}
+.btn{display:inline-block;border:0;cursor:pointer;padding:14px 26px;border-radius:12px;font-size:16px;font-weight:700;color:#1a0e02;background:linear-gradient(135deg,var(--or2),var(--or));transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(255,138,31,.4)}
+.btn.full{width:100%;margin-top:18px}
+.btn.ghost{background:transparent;color:var(--or2);border:1px solid var(--line)}
+.btn.wa{background:linear-gradient(135deg,#3be07f,#1ea85a);color:#04210f}
+
+/* SITE */
+header{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 5vw;background:rgba(13,11,9,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+header b{font-family:Georgia,serif;font-size:19px}
+header nav{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+header a,header button{color:var(--tx);text-decoration:none;font-size:14px;padding:8px 14px;border-radius:10px;background:none;border:0;cursor:pointer}
+header a:hover,header button:hover{background:rgba(255,138,31,.16)}
+main{max-width:1100px;margin:0 auto;padding:0 5vw 80px;position:relative}
+.hero{padding:70px 0 40px}
+.hero h1{font-size:clamp(34px,6vw,60px);max-width:760px}
+.hero p{color:var(--mut);font-size:18px;max-width:620px;margin-top:16px}
+.hero .who{display:inline-block;margin-top:20px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--or2);font-size:14px}
+section{padding-top:50px}
+section>h2{font-size:32px;margin-bottom:8px}
+section>.sub{color:var(--mut);margin-bottom:26px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px;backdrop-filter:blur(10px)}
+.card .ic{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;font-size:28px;background:rgba(255,138,31,.14);border:1px solid var(--line);margin-bottom:14px}
+.card h3{font-size:22px;margin-bottom:6px}
+.card .pg{font-size:13px;color:var(--or2);margin-bottom:10px}
+.card p{color:#e3d8cc;font-size:15px;margin-bottom:10px}
+.card ul{padding-left:20px;color:var(--mut);font-size:14px}
+.card li{margin:4px 0}
+
+/* TEST */
+.test{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:30px;backdrop-filter:blur(12px)}
+.rules{border-left:4px solid var(--or);padding:12px 16px;background:rgba(255,138,31,.08);border-radius:0 12px 12px 0;color:#e9dccd;margin-bottom:22px;font-size:15px}
+.bar{height:8px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden;margin-bottom:8px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--or),var(--or2));transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:14px;margin-bottom:16px}
+.q{font-family:Georgia,serif;font-size:23px;margin-bottom:18px}
+.opt{display:block;width:100%;text-align:left;padding:14px 16px;margin-bottom:10px;border-radius:12px;border:1px solid var(--line);background:rgba(0,0,0,.35);color:var(--tx);font-size:16px;cursor:pointer;transition:.15s}
+.opt:hover{border-color:var(--or);background:rgba(255,138,31,.12)}
+.opt.sel{border-color:var(--or);background:rgba(255,138,31,.25)}
+.res{text-align:center}
+.grade{font-family:Georgia,serif;font-size:96px;color:var(--or);line-height:1}
+.res .sc{color:var(--mut);margin:8px 0 18px}
+.warnbox{background:rgba(255,93,93,.12);border:1px solid var(--bad);color:#ffc4c4;border-radius:12px;padding:10px 14px;margin-bottom:16px;font-size:14px}
+.review{text-align:left;margin:20px 0}
+.review div{padding:10px 14px;border-radius:10px;margin-bottom:8px;background:rgba(0,0,0,.35);font-size:14px}
+.review .r{border-left:4px solid var(--ok)}
+.review .w{border-left:4px solid var(--bad)}
+#overlay{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.92);display:grid;place-items:center;padding:20px;text-align:center}
+#overlay div{max-width:460px;background:#1b1109;border:2px solid var(--bad);border-radius:20px;padding:30px}
+#overlay h2{color:var(--bad);margin-bottom:10px}
+#overlay p{margin-bottom:18px;color:#f0d9d9}
+footer{text-align:center;color:var(--mut);font-size:13px;padding:30px 5vw}
+@media(max-width:600px){.grid{grid-template-columns:1fr}.q{font-size:20px}.test{padding:20px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<!-- ЭКРАН ВХОДА -->
+<div id="login">
+  <form class="box" id="loginForm" autocomplete="off" novalidate>
+    <div class="emblem">☀</div>
+    <h1>Человек и общество</h1>
+    <p>7 класс · Кыргызская Республика. Введите данные, чтобы открыть материалы и пройти тест.</p>
+    <label for="fio">Фамилия и Имя</label>
+    <input id="fio" type="text" placeholder="Например: Асанов Бакыт" maxlength="60">
+    <label for="phone">Номер телефона WhatsApp</label>
+    <input id="phone" type="tel" placeholder="+996 700 123 456" maxlength="20">
+    <div class="err" id="loginErr"></div>
+    <button class="btn full" type="submit">Войти</button>
+  </form>
+</div>
+
+<!-- САЙТ -->
+<div id="app" class="hidden">
+  <header>
+    <b>🏔 Человек и общество</b>
+    <nav>
+      <a href="#topics">Темы</a>
+      <a href="#testSec">Тест</a>
+      <button id="logout" type="button">Выйти</button>
+    </nav>
+  </header>
+  <main>
+    <div class="hero">
+      <h1>Кто мы, какие у нас права и что нас объединяет</h1>
+      <p>Конспект по учебнику М.Л. Азизовой, И.А. Аруновой, М.С. Масловой, страницы 6–96. Прочитайте темы, затем пройдите тест.</p>
+      <span class="who" id="who"></span>
+    </div>
+
+    <section id="topics">
+      <h2>Темы учебника</h2>
+      <p class="sub">Страницы 6–96</p>
+      <div class="grid">
+        <article class="card">
+          <div class="ic">🧑</div>
+          <h3>Человек, личность и общество</h3>
+          <div class="pg">Стр. 6–30</div>
+          <p>Человек — биологическое и социальное существо. Личность формируется в семье, школе и среди друзей, когда человек усваивает правила жизни среди людей.</p>
+          <ul>
+            <li>Индивид, личность, индивидуальность</li>
+            <li>Социализация и её институты</li>
+            <li>Общество и его сферы: экономика, политика, культура, социальная жизнь</li>
+            <li>Семья как малая группа общества</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="ic">⚖</div>
+          <h3>Права и обязанности гражданина Кыргызстана</h3>
+          <div class="pg">Стр. 31–56</div>
+          <p>Гражданин — человек, связанный с государством правами и обязанностями. Основной закон страны — Конституция Кыргызской Республики.</p>
+          <ul>
+            <li>Право на жизнь, образование, охрану здоровья, равенство перед законом</li>
+            <li>Обязанности: соблюдать закон, платить налоги, защищать Родину, беречь природу</li>
+            <li>Права ребёнка и их защита</li>
+            <li>Права неразрывно связаны с ответственностью</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="ic">🎭</div>
+          <h3>Культура, традиции и моральные ценности</h3>
+          <div class="pg">Стр. 57–78</div>
+          <p>Культура — всё, что создано людьми: обычаи, искусство, знания. Кыргызский народ хранит эпос «Манас», юрту, кочевые традиции, гостеприимство и уважение к старшим.</p>
+          <ul>
+            <li>Материальная и духовная культура</li>
+            <li>Традиции и обычаи: Нооруз, бешик той, аксакалы</li>
+            <li>Мораль: добро, честь, совесть, справедливость</li>
+            <li>Нравственный выбор и ответственность за поступки</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="ic">💡</div>
+          <h3>Духовная жизнь человека и взаимопонимание</h3>
+          <div class="pg">Стр. 79–96</div>
+          <p>Духовная жизнь — это мысли, чувства, вера, искусство и самообразование. Взаимопонимание держится на уважении, терпимости и умении слушать другого.</p>
+          <ul>
+            <li>Самопознание и самовоспитание</li>
+            <li>Толерантность и диалог между людьми разных народов и религий</li>
+            <li>Дружба, сотрудничество, разрешение конфликтов без насилия</li>
+            <li>Кыргызстан — дом для многих народов</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="testSec">
+      <h2>Итоговый тест</h2>
+      <p class="sub">7 вопросов · оценка по 5-балльной системе</p>
+      <div class="test noselect" id="testBox">
+        <div id="intro">
+          <div class="rules">
+            <b>Правила античит-системы:</b> нельзя переключать вкладку и сворачивать окно, нажимать правую кнопку мыши, копировать текст, открывать F12 и исходный код. Каждое нарушение снимает 1 балл. После 3 нарушений тест завершается автоматически.
+          </div>
+          <button class="btn" id="startBtn" type="button">Начать тест</button>
+        </div>
+        <div id="quiz" class="hidden">
+          <div class="bar"><i id="barFill"></i></div>
+          <div class="meta"><span id="qNum"></span><span id="violInfo"></span></div>
+          <div class="q" id="qText"></div>
+          <div id="opts"></div>
+          <button class="btn" id="nextBtn" type="button" disabled>Далее</button>
+        </div>
+        <div id="result" class="hidden res"></div>
+      </div>
+    </section>
+  </main>
+  <footer>Человек и общество · 7 класс · Кыргызская Республика</footer>
+</div>
+
+<div id="overlay" class="hidden" role="alertdialog" aria-live="assertive">
+  <div>
+    <h2>⚠ Нарушение правил!</h2>
+    <p id="ovText"></p>
+    <button class="btn" id="ovBtn" type="button">Вернуться к тесту</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var TEACHER_PHONE = "996700000000"; // номер учителя: код страны + номер, без + и пробелов
+  var MAX_VIOL = 3;
+
+  var QUESTIONS = [
+    {q:"Чем человек как личность отличается от простого индивида?",
+     o:["Ростом и весом","Социальными качествами, сформированными в обществе","Только местом жительства","Наличием паспорта"],a:1},
+    {q:"Как называется процесс усвоения человеком норм, ценностей и ролей общества?",
+     o:["Миграция","Урбанизация","Социализация","Инфляция"],a:2},
+    {q:"Какой документ является Основным законом Кыргызской Республики?",
+     o:["Кодекс о семье","Конституция","Устав школы","Трудовой договор"],a:1},
+    {q:"Что из перечисленного является обязанностью гражданина Кыргызстана?",
+     o:["Выбирать любую профессию","Соблюдать Конституцию и законы","Свободно передвигаться по стране","Получать бесплатное образование"],a:1},
+    {q:"К духовной культуре народа относится:",
+     o:["Здание школы","Эпос «Манас»","Автомобильная дорога","Завод"],a:1},
+    {q:"Что такое мораль?",
+     o:["Система норм о добре и зле, чести и совести","Свод государственных законов","Вид искусства","Наука о деньгах"],a:0},
+    {q:"Что означает толерантность?",
+     o:["Безразличие к другим людям","Терпимость и уважение к другим взглядам и обычаям","Желание всех переубедить","Отказ от своих традиций"],a:1}
+  ];
+
+  var $ = function(id){return document.getElementById(id);};
+  var state = {idx:0, answers:[], violations:0, active:false, finished:false};
+  var user = null;
+
+  /* ---------- ВХОД ---------- */
+  function loadUser(){
+    try{ user = JSON.parse(localStorage.getItem("hs7_user")||"null"); }catch(e){ user = null; }
+  }
+  function showApp(){
+    $("login").classList.add("hidden");
+    $("app").classList.remove("hidden");
+    $("who").textContent = user.name + " · " + user.phone;
+  }
+  $("loginForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    var name = $("fio").value.trim().replace(/\s+/g," ");
+    var phone = $("phone").value.trim();
+    var digits = phone.replace(/\D/g,"");
+    if(name.split(" ").length < 2 || name.length < 5){ $("loginErr").textContent = "Введите фамилию и имя полностью."; return; }
+    if(digits.length < 9 || digits.length > 15){ $("loginErr").textContent = "Введите корректный номер WhatsApp."; return; }
+    user = {name:name, phone:phone};
+    try{ localStorage.setItem("hs7_user", JSON.stringify(user)); }catch(err){}
+    $("loginErr").textContent = "";
+    showApp();
+    window.scrollTo(0,0);
+  });
+  $("logout").addEventListener("click", function(){
+    try{ localStorage.removeItem("hs7_user"); }catch(e){}
+    location.reload();
+  });
+
+  /* ---------- ТЕСТ ---------- */
+  $("startBtn").addEventListener("click", function(){
+    state = {idx:0, answers:[], violations:0, active:true, finished:false};
+    $("intro").classList.add("hidden");
+    $("result").classList.add("hidden");
+    $("quiz").classList.remove("hidden");
+    renderQ();
+  });
+
+  function renderQ(){
+    var item = QUESTIONS[state.idx];
+    $("qNum").textContent = "Вопрос " + (state.idx+1) + " из " + QUESTIONS.length;
+    $("violInfo").textContent = "Нарушений: " + state.violations + " из " + MAX_VIOL;
+    $("barFill").style.width = (state.idx/QUESTIONS.length*100) + "%";
+    $("qText").textContent = item.q;
+    $("nextBtn").disabled = true;
+    $("nextBtn").textContent = state.idx === QUESTIONS.length-1 ? "Завершить тест" : "Далее";
+    var box = $("opts");
+    box.innerHTML = "";
+    item.o.forEach(function(text,i){
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "opt";
+      b.textContent = text;
+      b.addEventListener("click", function(){
+        Array.prototype.forEach.call(box.children,function(c){c.classList.remove("sel");});
+        b.classList.add("sel");
+        state.answers[state.idx] = i;
+        $("nextBtn").disabled = false;
+      });
+      box.appendChild(b);
+    });
+  }
+
+  $("nextBtn").addEventListener("click", function(){
+    if(state.idx < QUESTIONS.length-1){ state.idx++; renderQ(); }
+    else finish(false);
+  });
+
+  function finish(forced){
+    if(state.finished) return;
+    state.finished = true;
+    state.active = false;
+    $("overlay").classList.add("hidden");
+    $("quiz").classList.add("hidden");
+
+    var correct = 0;
+    QUESTIONS.forEach(function(q,i){ if(state.answers[i] === q.a) correct++; });
+    var raw = correct / QUESTIONS.length * 5;
+    var score = raw - state.violations;
+    var grade = Math.max(2, Math.min(5, Math.round(score)));
+    if(correct === 0) grade = 2;
+
+    var lines = [], review = "";
+    QUESTIONS.forEach(function(q,i){
+      var ans = state.answers[i];
+      var has = typeof ans === "number";
+      var ok = ans === q.a;
+      lines.push((i+1) + ") " + (has ? q.o[ans] : "нет ответа") + (ok ? " ✅" : " ❌"));
+      review += '<div class="' + (ok?"r":"w") + '"><b>' + (i+1) + ". " + esc(q.q) + "</b><br>Ваш ответ: " + esc(has ? q.o[ans] : "нет ответа") +
+        (ok ? "" : "<br>Верно: " + esc(q.o[q.a])) + "</div>";
+    });
+
+    var msg = "Результаты теста «Человек и общество», 7 класс\n" +
+      "Имя и фамилия: " + user.name + "\n" +
+      "Телефон: " + user.phone + "\n" +
+      "Оценка: " + grade + " (верно " + correct + " из " + QUESTIONS.length + ")\n" +
+      "Нарушений античита: " + state.violations + (forced ? " (тест прекращён автоматически)" : "") + "\n" +
+      "Ответы:\n" + lines.join("\n");
+    var link = "https://wa.me/" + TEACHER_PHONE + "?text=" + encodeURIComponent(msg);
+
+    var r = $("result");
+    r.innerHTML =
+      (forced ? '<div class="warnbox">Тест завершён автоматически из-за нарушений правил.</div>' : "") +
+      '<div class="grade">' + grade + '</div>' +
+      '<div class="sc">Верно ' + correct + ' из ' + QUESTIONS.length + ' · нарушений: ' + state.violations + (state.violations ? " (−" + state.violations + " б.)" : "") + '</div>' +
+      '<a class="btn wa" id="waBtn" href="' + link + '" target="_blank" rel="noopener">Отправить результаты учителю на WhatsApp</a>' +
+      '<div class="review">' + review + '</div>' +
+      '<button class="btn ghost" id="retry" type="button">Пройти заново</button>';
+    r.classList.remove("hidden");
+    $("retry").addEventListener("click", function(){
+      r.classList.add("hidden");
+      $("intro").classList.remove("hidden");
+      state.finished = false;
+    });
+    r.scrollIntoView({behavior:"smooth",block:"center"});
+  }
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+
+  /* ---------- АНТИЧИТ ---------- */
+  var lastViol = 0;
+  function violation(reason){
+    if(!state.active || state.finished) return;
+    var now = Date.now();
+    if(now - lastViol < 1500) return; // blur и visibilitychange приходят вместе
+    lastViol = now;
+    state.violations++;
+    $("violInfo").textContent = "Нарушений: " + state.violations + " из " + MAX_VIOL;
+    if(state.violations >= MAX_VIOL){ finish(true); return; }
+    $("ovText").textContent = reason + " Снят 1 балл. Осталось попыток до автоматического завершения: " + (MAX_VIOL - state.violations) + ".";
+    $("overlay").classList.remove("hidden");
+  }
+  $("ovBtn").addEventListener("click", function(){ $("overlay").classList.add("hidden"); });
+
+  document.addEventListener("visibilitychange", function(){
+    if(document.hidden) violation("Вы переключили вкладку или свернули окно.");
+  });
+  window.addEventListener("blur", function(){
+    violation("Окно браузера потеряло фокус.");
+  });
+
+  document.addEventListener("contextmenu", function(e){ e.preventDefault(); });
+  ["copy","cut","dragstart","selectstart"].forEach(function(ev){
+    document.addEventListener(ev, function(e){
+      if(e.target && /INPUT|TEXTAREA/.test(e.target.tagName)) return;
+      e.preventDefault();
+    });
+  });
+  document.addEventListener("keydown", function(e){
+    var k = (e.key || "").toLowerCase();
+    var ctrl = e.ctrlKey || e.metaKey;
+    var inField = e.target && /INPUT|TEXTAREA/.test(e.target.tagName);
+    var block =
+      e.key === "F12" ||
+      (ctrl && !inField && ["c","u","s","p","a","x"].indexOf(k) > -1) ||
+      (ctrl && e.shiftKey && ["i","j","c","k"].indexOf(k) > -1) ||
+      (ctrl && inField && ["u","s","p"].indexOf(k) > -1);
+    if(block){
+      e.preventDefault();
+      e.stopPropagation();
+      if(state.active) violation("Использована запрещённая комбинация клавиш.");
+    }
+  }, true);
+
+  /* ---------- СТАРТ ---------- */
+  loadUser();
+  if(user && user.name && user.phone) showApp();
+})();
+</script>
+</body>
+</html>
